@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\AddController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,4 @@ use App\Http\Controllers\TransactionController;
 
 
 Route::get('/transactions', [TransactionController::class, 'index']);
+Route::get('/addTransaction', [TransactionController::class, 'create']);

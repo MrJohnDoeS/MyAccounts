@@ -15,10 +15,12 @@ class TransactionController extends Controller
     public function index()
     {
         $data = [
-            'name'=> 'nom des transactions',
-            'transactions'=> Transaction::all()
-            
+            'transactions'=> Transaction::where('date_transaction', 'LIKE', '2023-07%')
+            ->orderByDesc ('date_transaction')
+            ->get(),
+            'total' => Transaction::sum('amount'),
         ]; 
+        
         return view ('transactionList', $data);
     }
 
@@ -29,7 +31,7 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        return view ('addTransaction');
     }
 
     /**

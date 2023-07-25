@@ -17,8 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100);
             $table->decimal('amount');
-            $table->date ('date-transaction');
-            $table->boolean('done');
+            $table->date ('date_transaction');
             $table->timestamps();
         });
     }
