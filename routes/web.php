@@ -19,4 +19,6 @@ use App\Http\Controllers\TransactionController;
 // });
 
 
-Route::get('/transactions', [TransactionController::class, 'index']);
+Route::get('/list', [TransactionController::class, 'index'])-> name('transactionList');
+Route::get('/add', [TransactionController::class, 'create'])-> name('transactionAdd');
+Route::post('/add', [TransactionController::class, 'store'])-> name('transactionStore');
