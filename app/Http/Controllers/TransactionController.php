@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Transaction;
+use DateTime;
+use Illuminate\Support\Facades\Redirect;
 
 class TransactionController extends Controller
 {
@@ -31,7 +33,8 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        return view ('addTransaction');
+   
+        return view ('transactionAdd');
     }
 
     /**
@@ -42,7 +45,17 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        // $date = new DateTime($request->input('date'));
+
+        $transaction = new Transaction;
+        // $transaction->name = $request->name;
+        $transaction -> name = $request->input('name');
+        $transaction -> date_transaction = $request->input('date');
+        $transaction -> amount = $request->input('amount');
+        $transaction -> save();
+
+        return Redirect::route('transactionList') -> with ('success' , 'Transaction enregistré avec succès'); // Redirect::route('') == HEADER:LOCATION 
     }
 
     /**

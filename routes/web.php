@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TransactionController;
-use App\Http\Controllers\AddController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +19,6 @@ use App\Http\Controllers\AddController;
 // });
 
 
-Route::get('/transactions', [TransactionController::class, 'index']);
-Route::get('/addTransaction', [TransactionController::class, 'create']);
+Route::get('/list', [TransactionController::class, 'index'])-> name('transactionList');
+Route::get('/add', [TransactionController::class, 'create'])-> name('transactionAdd');
+Route::post('/add', [TransactionController::class, 'store'])-> name('transactionStore');
